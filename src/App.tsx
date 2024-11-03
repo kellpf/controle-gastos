@@ -1,9 +1,13 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
-import { ListarDespesas } from "./pages/listar-registros/ListarRegistros";
 
 function App() {
-
-  return <ListarDespesas />;
+  return (
+    <div>
+      <h1>app</h1>
+      <Outlet />
+    </div>
+  );
 }
 
 export default App;

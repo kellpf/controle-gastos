@@ -9,7 +9,7 @@ export interface RegistroFinanceiro {
   categoria?: string;
 }
 
-export const ListarDespesas = () => {
+export const ListarRegistros = () => {
   const [registroFinanceiro, setRegistroFinanceiro] = useState<
     RegistroFinanceiro[]
   >([{ tipo: "despesa", descricao: "Mercado", valor: 55 }]);
