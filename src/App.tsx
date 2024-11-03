@@ -1,14 +1,9 @@
-import { useState } from 'react'
-import './App.css'
+import "./App.css";
+import { ListarDespesas } from "./pages/listar-registros/ListarRegistros";
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      Hello
-    </>
-  )
+  return <ListarDespesas />;
 }
 
-export default App
+export default App;
