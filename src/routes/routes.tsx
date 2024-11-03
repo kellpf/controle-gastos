@@ -1,16 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AdicionarRegistro } from "../pages/adicionar-registro/AdicionarRegistro";
 import { ListarRegistros } from "../pages/listar-registros/ListarRegistros";
+import App from "../App";
 
 const routes = createBrowserRouter([
     {
         path: '/',
-        element: <ListarRegistros />,
+        element: <App />,
         children: [
             {
-                path: 'adicionar',
+                path: '',
+                element: <ListarRegistros />
+            },
+            {
+                path: '/adicionar',
                 element: <AdicionarRegistro />
-            }
+            },
         ]
     },
 ]);

@@ -1,7 +1,19 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { useState } from "react";
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../context/GlobalState";
 
 export interface RegistroFinanceiro {
+  id: string;
   tipo: "despesa" | "receita";
   descricao: string;
   valor: number;
@@ -12,20 +24,19 @@ export interface RegistroFinanceiro {
 export const ListarRegistros = () => {
   const [registroFinanceiro, setRegistroFinanceiro] = useState<
     RegistroFinanceiro[]
-  >([{ tipo: "despesa", descricao: "Mercado", valor: 55 }]);
+  >([{ id: "123", tipo: "despesa", descricao: "Mercado", valor: 55 }]);
+  const navigate = useNavigate();
+
+  const { registros, removeRegistro } = useContext(GlobalContext);
+
+  console.log("registros context", registros);
 
   console.log(registroFinanceiro);
 
   return (
     <>
-      Controle de gastos
-      {registroFinanceiro.map((registro, index) => (
-        <div key={index}>
-          <div>Tipo: {registro.tipo}</div>
-          <div>Descrição: {registro.descricao}</div>
-          <div>Valor: {registro.valor}</div>
-        </div>
-      ))}
+      <h4>Controle de gastos</h4>
+      <Button onClick={() => navigate("/adicionar")}>Adicionar</Button>
       {/* <AdicionarRegistro /> */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -38,7 +49,7 @@ export const ListarRegistros = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {registroFinanceiro.map((row, index) => (
+            {registros && registros.map((row, index) => (
               <TableRow
                 key={index}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -48,8 +59,9 @@ export const ListarRegistros = () => {
                 </TableCell>
                 <TableCell align="right">{row.descricao}</TableCell>
                 <TableCell align="right">{row.valor}</TableCell>
+                <TableCell align="right">{row.id}</TableCell>
                 <TableCell align="right">
-                  <button onClick={() => console.log('helllou')}>click</button>
+                  <button onClick={() => removeRegistro(row.id)}>click</button>
                 </TableCell>
               </TableRow>
             ))}
