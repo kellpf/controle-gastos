@@ -1,7 +1,6 @@
 import { RegistroFinanceiro } from "../pages/listar-registros/ListarRegistros";
 
 export interface ActionReducer {
-  // ADD ENUM
   type: "REMOVE_REGISTRO" | "ADICIONA_REGISTRO" | "EDITA_REGISTRO";
   payload: any;
 }

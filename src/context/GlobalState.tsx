@@ -24,7 +24,7 @@ export const GlobalContext = createContext<GlobalContexProps>(
   {} as GlobalContexProps
 );
 
-// Provicer Component
+// Provider Component
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 

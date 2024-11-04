@@ -5,7 +5,7 @@ import { TipoRegistro } from "../../pages/listar-registros/ListarRegistros";
 import { Tag } from "./Tag"; // ajuste o caminho conforme necessário
 
 describe("Tag component", () => {
-  it("deve render", () => {
+  it("deve renderizar componente", () => {
     render(<Tag tipo={TipoRegistro.DESPESA} />);
 
     expect(screen.getByText(TipoRegistro.DESPESA)).toBeInTheDocument();

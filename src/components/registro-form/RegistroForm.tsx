@@ -1,4 +1,3 @@
-// RegistroForm.jsx
 import {
   Button,
   FormControl,

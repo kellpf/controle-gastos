@@ -32,9 +32,8 @@ describe("RegistroForm", () => {
     );
   };
 
-  it("renderiza os campos de entrada corretamente", () => {
+  it("deve renderizar os campos corretamente", () => {
     renderComponent();
-    screen.debug();
 
     expect(screen.getAllByTestId("descricao")).toBeTruthy();
     expect(screen.getAllByTestId("valor")).toBeTruthy();
