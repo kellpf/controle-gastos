@@ -4,20 +4,20 @@ import { ListarRegistros } from "../pages/listar-registros/ListarRegistros";
 import App from "../App";
 
 const routes = createBrowserRouter([
-    {
-        path: '/',
-        element: <App />,
-        children: [
-            {
-                path: '',
-                element: <ListarRegistros />
-            },
-            {
-                path: '/adicionar',
-                element: <AdicionarRegistro />
-            },
-        ]
-    },
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "",
+        element: <ListarRegistros />,
+      },
+      {
+        path: "/adicionar",
+        element: <AdicionarRegistro />,
+      },
+    ],
+  },
 ]);
 
 export default routes;

@@ -1,3 +1,5 @@
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import {
   Button,
   Paper,
@@ -6,15 +8,22 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
+  TableRow
 } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Tag } from "../../components/tag/Tag";
 import { GlobalContext } from "../../context/GlobalState";
+import "./ListarRegistros.css";
+
+export enum TipoRegistro {
+  DESPESA = "despesa",
+  RECEITA = "receita",
+}
 
 export interface RegistroFinanceiro {
   id: string;
-  tipo: "despesa" | "receita";
+  tipo: TipoRegistro;
   descricao: string;
   valor: number;
   data?: Date;
@@ -22,49 +31,54 @@ export interface RegistroFinanceiro {
 }
 
 export const ListarRegistros = () => {
-  const [registroFinanceiro, setRegistroFinanceiro] = useState<
-    RegistroFinanceiro[]
-  >([{ id: "123", tipo: "despesa", descricao: "Mercado", valor: 55 }]);
-  const navigate = useNavigate();
-
   const { registros, removeRegistro } = useContext(GlobalContext);
-
+  const navigate = useNavigate();
   console.log("registros context", registros);
-
-  console.log(registroFinanceiro);
 
   return (
     <>
-      <h4>Controle de gastos</h4>
-      <Button onClick={() => navigate("/adicionar")}>Adicionar</Button>
-      {/* <AdicionarRegistro /> */}
+      <div className="header">
+        <h1>Controle de gastos</h1>
+        <Button variant="contained" onClick={() => navigate("/adicionar")}>
+          Adicionar
+        </Button>
+      </div>
+
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
+          <TableHead style={{ backgroundColor: "#E9ECEF" }}>
             <TableRow>
               <TableCell>Tipo</TableCell>
               <TableCell align="right">Descrição</TableCell>
               <TableCell align="right">Valor</TableCell>
-              <TableCell align="right">action</TableCell>
+              <TableCell align="right"></TableCell>
+              <TableCell align="right"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {registros && registros.map((row, index) => (
-              <TableRow
-                key={index}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.tipo}
-                </TableCell>
-                <TableCell align="right">{row.descricao}</TableCell>
-                <TableCell align="right">{row.valor}</TableCell>
-                <TableCell align="right">{row.id}</TableCell>
-                <TableCell align="right">
-                  <button onClick={() => removeRegistro(row.id)}>click</button>
-                </TableCell>
-              </TableRow>
-            ))}
+            {registros &&
+              registros.map((row, index) => (
+                <TableRow
+                  key={index}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell align="right">
+                    <Tag tipo={row.tipo} />
+                  </TableCell>
+                  <TableCell align="right">{row.descricao}</TableCell>
+                  <TableCell align="right">R$ {row.valor}</TableCell>
+                  <TableCell align="right" width="40px">
+                    <EditIcon color={"primary"} fontSize="small" />
+                  </TableCell>
+                  <TableCell align="right" width="10px">
+                    <DeleteIcon
+                      color={"primary"}
+                      fontSize="small"
+                      onClick={() => removeRegistro(row.id)}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

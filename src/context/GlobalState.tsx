@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useReducer } from "react";
-import { RegistroFinanceiro } from "../pages/listar-registros/ListarRegistros";
+import { RegistroFinanceiro, TipoRegistro } from "../pages/listar-registros/ListarRegistros";
 import AppReducer from "./AppReducer";
 
 interface State {
@@ -8,6 +8,7 @@ interface State {
 interface GlobalContexProps {
   registros: RegistroFinanceiro[];
   removeRegistro: (id: string) => void;
+  adicionaRegistro: (registroFinanceiro: RegistroFinanceiro) => void;
 }
 
 // Initial State
@@ -15,13 +16,13 @@ const initialState: State = {
   registros: [
     {
       id: "1",
-      tipo: "despesa",
+      tipo: TipoRegistro.DESPESA,
       descricao: "Mercado",
       valor: 98,
     },
     {
       id: "2",
-      tipo: "receita",
+      tipo: TipoRegistro.RECEITA,
       descricao: "Remuneração",
       valor: 800,
     },
@@ -45,9 +46,16 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const adicionaRegistro = (registroFinanceiro: RegistroFinanceiro) => {
+    dispatch({
+      type: "ADICIONA_REGISTRO",
+      payload: registroFinanceiro
+    });
+  }
+
   return (
     <GlobalContext.Provider
-      value={{ registros: state.registros, removeRegistro }}
+      value={{ registros: state.registros, removeRegistro, adicionaRegistro }}
     >
       {children}
     </GlobalContext.Provider>

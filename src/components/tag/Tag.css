@@ -1,0 +1,17 @@
+.tag {
+    border-radius: 4px;
+    max-width: 80px;
+    color:white;
+    text-align: center;
+    padding: 2px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.tag.despesa {
+    background-color: rgb(255, 99, 99); /* Vermelho */
+}
+
+.tag.receita {
+    background-color: rgb(113, 201, 113); /* Verde */
+}

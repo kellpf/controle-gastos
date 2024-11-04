@@ -1,0 +1,32 @@
+.container {
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  border: solid 1px rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+  padding: 16px;
+  text-align: start;
+  row-gap: 16px;
+}
+
+.radio-button {
+  display: flex;
+  justify-content: start;
+  .MuiFormLabel-root {
+    /* background-color: blueviolet; */
+    /* text-align: start; */
+  }
+}
+
+.group-field {
+  /* background-color: antiquewhite; */
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.container-button {
+    background-color: aquamarine;
+    display: flex;
+    justify-content: flex-end;
+}

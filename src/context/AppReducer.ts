@@ -16,6 +16,13 @@ export default (state: { registros: RegistroFinanceiro[] }, action: any) => {
         }),
       };
 
+      case 'ADICIONA_REGISTRO': {
+        return {
+          ...state,
+          registros: [action.payload, ...state.registros]
+        }
+      } 
+
     default:
       return state;
   }
