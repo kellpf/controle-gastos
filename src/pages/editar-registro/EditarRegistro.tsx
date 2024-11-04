@@ -1,11 +1,11 @@
-// EditarRegistro.jsx
+
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Button } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import RegistroForm from "../../components/registro-form/RegistroForm";
 import { GlobalContext } from "../../context/GlobalState";
 import { TipoRegistro } from "../listar-registros/ListarRegistros";
-import RegistroForm from "../../components/registro-form/RegistroForm";
 
 export const EditarRegistro = () => {
   const [descricao, setDescricao] = useState("");
@@ -15,15 +15,12 @@ export const EditarRegistro = () => {
   const { registros, editaRegistro } = useContext(GlobalContext);
   const navigate = useNavigate();
   const paramsId = useParams();
-  console.log('EditarRegistro')
 
   useEffect(() => {
-    console.log('entrou use efect edit')
     if (paramsId.id) {
       const findRegistro = registros.find(
         (registro) => registro.id === paramsId.id
       );
-      console.log("findRegistro", findRegistro)
       if (findRegistro) {
         setDescricao(findRegistro.descricao);
         setValor(findRegistro.valor.toString());

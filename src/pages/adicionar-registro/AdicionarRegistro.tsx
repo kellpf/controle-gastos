@@ -1,4 +1,3 @@
-// AdicionarRegistro.jsx
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Button } from "@mui/material";
 import { useContext, useState } from "react";
@@ -8,7 +7,6 @@ import RegistroForm from "../../components/registro-form/RegistroForm";
 import { GlobalContext } from "../../context/GlobalState";
 import { TipoRegistro } from "../listar-registros/ListarRegistros";
 
-
 export const AdicionarRegistro = () => {
   const [descricao, setDescricao] = useState("");
   const [tipo, setTipo] = useState(TipoRegistro.DESPESA);
@@ -16,8 +14,6 @@ export const AdicionarRegistro = () => {
 
   const { adicionaRegistro } = useContext(GlobalContext);
   const navigate = useNavigate();
-
-  console.log('AdicionarRegistro')
 
   const submit = () => {
     adicionaRegistro({

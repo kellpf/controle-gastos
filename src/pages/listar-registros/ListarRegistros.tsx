@@ -33,7 +33,6 @@ export interface RegistroFinanceiro {
 export const ListarRegistros = () => {
   const { registros, removeRegistro } = useContext(GlobalContext);
   const navigate = useNavigate();
-  // console.log("registros context", registros);
 
   return (
     <>
@@ -43,20 +42,19 @@ export const ListarRegistros = () => {
           Adicionar
         </Button>
       </div>
-
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead style={{ backgroundColor: "#E9ECEF" }}>
             <TableRow>
               <TableCell>Tipo</TableCell>
-              <TableCell >Descrição</TableCell>
-              <TableCell >Valor</TableCell>
+              <TableCell>Descrição</TableCell>
+              <TableCell>Valor</TableCell>
               <TableCell align="right"></TableCell>
               <TableCell align="right"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {registros &&
+            {registros.length > 0 ? (
               registros.map((row, index) => (
                 <TableRow
                   key={index}
@@ -68,7 +66,11 @@ export const ListarRegistros = () => {
                   <TableCell>{row.descricao}</TableCell>
                   <TableCell>R$ {row.valor}</TableCell>
                   <TableCell align="right" width="40px">
-                    <EditIcon color={"primary"} fontSize="small" onClick={() => navigate(`editar/${row.id}`)} />
+                    <EditIcon
+                      color={"primary"}
+                      fontSize="small"
+                      onClick={() => navigate(`editar/${row.id}`)}
+                    />
                   </TableCell>
                   <TableCell align="right" width="10px">
                     <DeleteIcon
@@ -78,7 +80,14 @@ export const ListarRegistros = () => {
                     />
                   </TableCell>
                 </TableRow>
-              ))}
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={5} align="center">
+                  Ainda não existem registros
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </TableContainer>
