@@ -11,12 +11,12 @@ import { useNavigate } from "react-router-dom";
 import { TipoRegistro } from "../../pages/listar-registros/ListarRegistros";
 import './RegistroForm.css';
 
-interface RegistroFormProps {
+export interface RegistroFormProps {
   descricao: string;
   setDescricao: React.Dispatch<React.SetStateAction<string>>;
   tipo: TipoRegistro;
   setTipo: React.Dispatch<React.SetStateAction<TipoRegistro>>;
-  valor: string;
+  valor: number;
   setValor: React.Dispatch<React.SetStateAction<string>>;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
@@ -42,11 +42,13 @@ const RegistroForm = ({
             <FormControlLabel
               value={TipoRegistro.DESPESA}
               control={<Radio />}
+              data-testid="despesa"
               label="Despesa"
             />
             <FormControlLabel
               value={TipoRegistro.RECEITA}
               control={<Radio />}
+              data-testid="receita"
               label="Receita"
             />
           </RadioGroup>
@@ -61,6 +63,7 @@ const RegistroForm = ({
           onChange={(e) => setDescricao(e.target.value)}
           label="Descrição"
           variant="outlined"
+          data-testid="descricao"
         />
         <TextField
           required
@@ -69,6 +72,7 @@ const RegistroForm = ({
           onChange={(e) => setValor(e.target.value)}
           label="Valor (R$)"
           variant="outlined"
+          data-testid="valor"
         />
       </div>
 
