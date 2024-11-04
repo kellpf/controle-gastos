@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { AdicionarRegistro } from "../pages/adicionar-registro/AdicionarRegistro";
 import { ListarRegistros } from "../pages/listar-registros/ListarRegistros";
 import App from "../App";
+import { EditarRegistro } from "../pages/editar-registro/EditarRegistro";
 
 const routes = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/editar/:id",
-        element: <AdicionarRegistro />,
+        element: <EditarRegistro />,
       },
     ],
   },
