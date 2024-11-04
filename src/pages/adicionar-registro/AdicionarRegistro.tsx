@@ -1,58 +1,89 @@
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import {
   Button,
   FormControl,
   FormControlLabel,
-  FormLabel,
   Radio,
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 import { GlobalContext } from "../../context/GlobalState";
+import {
+  TipoRegistro
+} from "../listar-registros/ListarRegistros";
 import "./AdicionarRegistro.css";
-import { TipoRegistro } from "../listar-registros/ListarRegistros";
 
 export const AdicionarRegistro = () => {
   const [descricao, setDescricao] = useState("");
   const [tipo, setTipo] = useState<TipoRegistro>(TipoRegistro.DESPESA);
-  const [valor, setValor] = useState(0);
+  const [valor, setValor] = useState("");
+
+  const { registros, adicionaRegistro, editaRegistro } =
+    useContext(GlobalContext);
+
   const navigate = useNavigate();
+  const paramsId = useParams();
 
-  const { adicionaRegistro } = useContext(GlobalContext);
+  useEffect(() => {
+    if (paramsId.id) {
+      console.log("tem params!");
+      const findRegistro = registros.find(
+        (registro) => registro.id === paramsId.id
+      );
+      if (findRegistro) {
+        setDescricao(findRegistro.descricao);
+        setValor(findRegistro.valor.toString());
+        setTipo(findRegistro.tipo);
+        console.log("registroSelecionado", findRegistro);
+      }
+    }
+  }, [registros, paramsId]);
 
-  const submit = (e) => {
-    e.preventDefault();
-    console.log("Clicou!");
-
-    adicionaRegistro({
-      id: "3",
-      descricao: descricao,
-      tipo: tipo,
-      valor: valor,
-    });
-
+  const submit = () => {
+    if (paramsId.id) {
+      console.log("edit");
+      editaRegistro({
+        id: paramsId?.id,
+        descricao: descricao,
+        tipo: tipo,
+        valor: parseFloat(valor),
+      });
+    } else {
+      console.log("add");
+      adicionaRegistro({
+        id: uuid(),
+        descricao: descricao,
+        tipo: tipo,
+        valor: parseFloat(valor),
+      });
+    }
     navigate("/");
   };
 
   return (
     <div className="container">
       <div className="container-button">
-        <Button variant="contained" onClick={() => navigate("/")}>
+        <Button variant="outlined" size="small" onClick={() => navigate("/")}>
+          <ArrowBackIcon />
           Voltar
         </Button>
       </div>
+
       <h1>Registre sua despesa ou receita</h1>
       <form onSubmit={submit}>
         <div className="radio-button">
           <FormControl>
-            <FormLabel id="demo-row-radio-buttons-group-label">Tipo</FormLabel>
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
               value={tipo}
-              onChange={(event, value: TipoRegistro) => setTipo(value)}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setTipo(event.target.value as TipoRegistro)
+              }
             >
               <FormControlLabel
                 value={TipoRegistro.DESPESA}
@@ -70,6 +101,7 @@ export const AdicionarRegistro = () => {
 
         <div className="group-field">
           <TextField
+            required
             id="descricao"
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
@@ -77,8 +109,8 @@ export const AdicionarRegistro = () => {
             variant="outlined"
           />
           <TextField
+            required
             id="valor"
-            prefix="R$"
             value={valor}
             onChange={(e) => setValor(e.target.value)}
             label="Valor (R$)"
@@ -87,7 +119,7 @@ export const AdicionarRegistro = () => {
         </div>
 
         <div className="container-button">
-          <Button type="submit" variant="contained">
+          <Button onClick={() => navigate("/")} variant="outlined">
             Cancelar
           </Button>
           <Button type="submit" variant="contained">

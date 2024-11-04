@@ -3,10 +3,11 @@ import "./App.css";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
+
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#ff3933",
+      main: '#673ab7'
     },
   },
 });

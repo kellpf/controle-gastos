@@ -8,25 +8,25 @@
   row-gap: 16px;
 }
 
-.radio-button {
+.container .radio-button {
   display: flex;
   justify-content: start;
-  .MuiFormLabel-root {
-    /* background-color: blueviolet; */
-    /* text-align: start; */
-  }
 }
 
-.group-field {
-  /* background-color: antiquewhite; */
+.container .group-field {
   display: flex;
-  gap: 10px;
+  gap: 16px;
   justify-content: space-between;
   flex-direction: column;
+  margin: 16px 0;
 }
 
-.container-button {
-    background-color: aquamarine;
+.container .container-button {
     display: flex;
     justify-content: flex-end;
+    gap: 16px;
+}
+
+.container h1{
+  margin-bottom: 0;
 }

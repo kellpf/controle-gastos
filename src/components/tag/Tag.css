@@ -9,9 +9,9 @@
 }
 
 .tag.despesa {
-    background-color: rgb(255, 99, 99); /* Vermelho */
+    background-color: rgb(255, 99, 99); 
 }
 
 .tag.receita {
-    background-color: rgb(113, 201, 113); /* Verde */
+    background-color: rgb(113, 201, 113); 
 }

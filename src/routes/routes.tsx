@@ -16,6 +16,10 @@ const routes = createBrowserRouter([
         path: "/adicionar",
         element: <AdicionarRegistro />,
       },
+      {
+        path: "/editar/:id",
+        element: <AdicionarRegistro />,
+      },
     ],
   },
 ]);

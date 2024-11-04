@@ -9,6 +9,7 @@ interface GlobalContexProps {
   registros: RegistroFinanceiro[];
   removeRegistro: (id: string) => void;
   adicionaRegistro: (registroFinanceiro: RegistroFinanceiro) => void;
+  editaRegistro: (registroFinanceiro: RegistroFinanceiro) => void;
 }
 
 // Initial State
@@ -53,9 +54,16 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     });
   }
 
+  const editaRegistro = (registroFinanceiro: RegistroFinanceiro) => {
+    dispatch({
+      type: "EDITA_REGISTRO",
+      payload: registroFinanceiro
+    });
+  }
+
   return (
     <GlobalContext.Provider
-      value={{ registros: state.registros, removeRegistro, adicionaRegistro }}
+      value={{ registros: state.registros, removeRegistro, adicionaRegistro, editaRegistro }}
     >
       {children}
     </GlobalContext.Provider>

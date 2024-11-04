@@ -8,7 +8,7 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow
+  TableRow,
 } from "@mui/material";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -33,24 +33,24 @@ export interface RegistroFinanceiro {
 export const ListarRegistros = () => {
   const { registros, removeRegistro } = useContext(GlobalContext);
   const navigate = useNavigate();
-  console.log("registros context", registros);
+  // console.log("registros context", registros);
 
   return (
     <>
       <div className="header">
-        <h1>Controle de gastos</h1>
+        <h1>Controle de gastos pessoais</h1>
         <Button variant="contained" onClick={() => navigate("/adicionar")}>
           Adicionar
         </Button>
       </div>
 
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead style={{ backgroundColor: "#E9ECEF" }}>
             <TableRow>
               <TableCell>Tipo</TableCell>
-              <TableCell align="right">Descrição</TableCell>
-              <TableCell align="right">Valor</TableCell>
+              <TableCell >Descrição</TableCell>
+              <TableCell >Valor</TableCell>
               <TableCell align="right"></TableCell>
               <TableCell align="right"></TableCell>
             </TableRow>
@@ -65,10 +65,10 @@ export const ListarRegistros = () => {
                   <TableCell align="right">
                     <Tag tipo={row.tipo} />
                   </TableCell>
-                  <TableCell align="right">{row.descricao}</TableCell>
-                  <TableCell align="right">R$ {row.valor}</TableCell>
+                  <TableCell>{row.descricao}</TableCell>
+                  <TableCell>R$ {row.valor}</TableCell>
                   <TableCell align="right" width="40px">
-                    <EditIcon color={"primary"} fontSize="small" />
+                    <EditIcon color={"primary"} fontSize="small" onClick={() => navigate(`editar/${row.id}`)} />
                   </TableCell>
                   <TableCell align="right" width="10px">
                     <DeleteIcon
