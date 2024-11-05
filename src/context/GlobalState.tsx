@@ -14,21 +14,17 @@ interface GlobalContexProps {
   editaRegistro: (registroFinanceiro: RegistroFinanceiro) => void;
 }
 
-// Initial State
 const initialState: State = {
   registros: [],
 };
 
-// Create Context
 export const GlobalContext = createContext<GlobalContexProps>(
   {} as GlobalContexProps
 );
 
-// Provider Component
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  // Actions
   const removeRegistro = (id: string) => {
     dispatch({
       type: "REMOVE_REGISTRO",
