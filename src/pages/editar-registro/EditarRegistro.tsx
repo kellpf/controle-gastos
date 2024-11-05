@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import RegistroForm from "../../components/registro-form/RegistroForm";
 import { GlobalContext } from "../../context/GlobalState";
-import { TipoRegistro } from "../listar-registros/ListarRegistros";
+import { TipoRegistro } from "../../utils/registros";
 
 export const EditarRegistro = () => {
   const [descricao, setDescricao] = useState("");

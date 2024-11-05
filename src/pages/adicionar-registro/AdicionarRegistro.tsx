@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import RegistroForm from "../../components/registro-form/RegistroForm";
 import { GlobalContext } from "../../context/GlobalState";
-import { TipoRegistro } from "../listar-registros/ListarRegistros";
+import { TipoRegistro } from "../../utils/registros";
 
 export const AdicionarRegistro = () => {
   const [descricao, setDescricao] = useState("");

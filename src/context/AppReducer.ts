@@ -1,11 +1,6 @@
-import { RegistroFinanceiro } from "../pages/listar-registros/ListarRegistros";
+import { ActionReducer, RegistroFinanceiro } from "../utils/registros";
 
-export interface ActionReducer {
-  type: "REMOVE_REGISTRO" | "ADICIONA_REGISTRO" | "EDITA_REGISTRO";
-  payload: any;
-}
-
-export default (state: { registros: RegistroFinanceiro[] }, action: any) => {
+export default (state: { registros: RegistroFinanceiro[] }, action: ActionReducer) => {
   switch (action.type) {
     case "REMOVE_REGISTRO":
       return {

@@ -1,5 +1,5 @@
-import { TipoRegistro } from "../../pages/listar-registros/ListarRegistros";
-import "./Tag.css";
+import { TipoRegistro } from "../../utils/registros";
+import "./Tag.scss";
 
 export interface TagProps {
   tipo: TipoRegistro;

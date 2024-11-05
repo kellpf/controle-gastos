@@ -3,7 +3,8 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { GlobalContext } from "../../context/GlobalState";
-import { ListarRegistros, RegistroFinanceiro, TipoRegistro } from "./ListarRegistros";
+import { RegistroFinanceiro, TipoRegistro } from "../../utils/registros";
+import { ListarRegistros } from "./ListarRegistros";
 
 const mockNavigate = vi.fn();
 vi.mock("react-router-dom", async () => {
@@ -16,9 +17,6 @@ vi.mock("react-router-dom", async () => {
 
 describe("ListarRegistros", () => {
   const mockRemoveRegistro = vi.fn();
-
-  // Mock do useNavigate
-
   const mockRegistros: RegistroFinanceiro[] = [
     { id: "1", tipo: TipoRegistro.DESPESA, descricao: "Despesa 1", valor: 100 },
     { id: "2", tipo: TipoRegistro.RECEITA, descricao: "Receita 1", valor: 200 },
@@ -42,7 +40,6 @@ describe("ListarRegistros", () => {
   };
 
   beforeEach(() => {
-    // Resetar mocks antes de cada teste
     mockNavigate.mockClear();
     mockRemoveRegistro.mockClear();
   });

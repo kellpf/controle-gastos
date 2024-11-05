@@ -14,21 +14,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tag } from "../../components/tag/Tag";
 import { GlobalContext } from "../../context/GlobalState";
-import "./ListarRegistros.css";
-
-export enum TipoRegistro {
-  DESPESA = "despesa",
-  RECEITA = "receita",
-}
-
-export interface RegistroFinanceiro {
-  id: string;
-  tipo: TipoRegistro;
-  descricao: string;
-  valor: number;
-  data?: Date;
-  categoria?: string;
-}
+import "./ListarRegistros.scss";
 
 export const ListarRegistros = () => {
   const { registros, removeRegistro } = useContext(GlobalContext);

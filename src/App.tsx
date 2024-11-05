@@ -1,8 +1,7 @@
 import { Outlet } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-
 
 const theme = createTheme({
   palette: {

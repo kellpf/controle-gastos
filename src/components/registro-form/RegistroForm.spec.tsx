@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { TipoRegistro } from "../../pages/listar-registros/ListarRegistros";
+import { TipoRegistro } from "../../utils/registros";
 import RegistroForm, { RegistroFormProps } from "./RegistroForm";
 
 const mockNavigate = vi.fn();

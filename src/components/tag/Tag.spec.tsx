@@ -1,8 +1,8 @@
 import "@testing-library/jest-dom/vitest";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { TipoRegistro } from "../../pages/listar-registros/ListarRegistros";
-import { Tag } from "./Tag"; // ajuste o caminho conforme necessário
+import { Tag } from "./Tag";
+import { TipoRegistro } from "../../utils/registros";
 
 describe("Tag component", () => {
   it("deve renderizar componente", () => {

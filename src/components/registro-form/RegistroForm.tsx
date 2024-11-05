@@ -7,8 +7,8 @@ import {
   TextField,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { TipoRegistro } from "../../pages/listar-registros/ListarRegistros";
-import "./RegistroForm.css";
+import { TipoRegistro } from "../../utils/registros";
+import "./RegistroForm.scss";
 
 export interface RegistroFormProps {
   descricao: string;

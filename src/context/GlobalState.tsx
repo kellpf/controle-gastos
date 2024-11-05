@@ -1,18 +1,9 @@
 import { createContext, ReactNode, useReducer } from "react";
-import {
-  RegistroFinanceiro
-} from "../pages/listar-registros/ListarRegistros";
-import AppReducer from "./AppReducer";
 
-interface State {
-  registros: RegistroFinanceiro[];
-}
-interface GlobalContexProps {
-  registros: RegistroFinanceiro[];
-  removeRegistro: (id: string) => void;
-  adicionaRegistro: (registroFinanceiro: RegistroFinanceiro) => void;
-  editaRegistro: (registroFinanceiro: RegistroFinanceiro) => void;
-}
+import AppReducer from "./AppReducer";
+import { GlobalContexProps, RegistroFinanceiro, State } from "../utils/registros";
+
+
 
 const initialState: State = {
   registros: [],

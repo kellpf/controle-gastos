@@ -1,10 +1,10 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { AdicionarRegistro } from "./AdicionarRegistro";
 import { GlobalContext } from "../../context/GlobalState";
-import { TipoRegistro } from "../listar-registros/ListarRegistros";
-import "@testing-library/jest-dom";
+import { TipoRegistro } from "../../utils/registros";
+import { AdicionarRegistro } from "./AdicionarRegistro";
 
 const mockNavigate = vi.fn();
 vi.mock("react-router-dom", async () => {
