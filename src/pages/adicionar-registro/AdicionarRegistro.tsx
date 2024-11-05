@@ -28,7 +28,7 @@ export const AdicionarRegistro = () => {
   return (
     <div className="container">
       <div className="container-button">
-        <Button variant="outlined" size="small" onClick={() => navigate("/")}>
+        <Button variant="outlined" id="botao-voltar" data-testid="botao-voltar" size="small" onClick={() => navigate("/")}>
           <ArrowBackIcon />
           Voltar
         </Button>
