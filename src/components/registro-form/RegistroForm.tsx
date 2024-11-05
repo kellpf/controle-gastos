@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { TipoRegistro } from "../../pages/listar-registros/ListarRegistros";
-import './RegistroForm.css';
+import "./RegistroForm.css";
 
 export interface RegistroFormProps {
   descricao: string;
@@ -35,6 +35,9 @@ const RegistroForm = ({
         <FormControl>
           <RadioGroup
             row
+            name="tipo"
+            data-testid="tipo-registro"
+            id="tipo-registro"
             value={tipo}
             onChange={(event) => setTipo(event.target.value as TipoRegistro)}
           >
@@ -42,12 +45,14 @@ const RegistroForm = ({
               value={TipoRegistro.DESPESA}
               control={<Radio />}
               data-testid="despesa"
+              id="despesa"
               label="Despesa"
             />
             <FormControlLabel
               value={TipoRegistro.RECEITA}
               control={<Radio />}
               data-testid="receita"
+              id="receita"
               label="Receita"
             />
           </RadioGroup>
@@ -76,10 +81,15 @@ const RegistroForm = ({
       </div>
 
       <div className="container-button">
-        <Button type="button" variant="outlined" onClick={() => navigate("/")}>
+        <Button
+          type="button"
+          data-testid="botao-cancelar"
+          variant="outlined"
+          onClick={() => navigate("/")}
+        >
           Cancelar
         </Button>
-        <Button type="submit" variant="contained">
+        <Button type="submit" data-testid="botao-salvar" variant="contained">
           Salvar
         </Button>
       </div>
